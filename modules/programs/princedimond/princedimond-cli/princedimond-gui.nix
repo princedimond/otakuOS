@@ -10,6 +10,7 @@
         "anytype-heart"
         "zoom"
         "hubstaff"
+        "microsoft-edge"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
