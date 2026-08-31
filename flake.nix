@@ -12,7 +12,7 @@
     };
     import-tree.url = "github:vic/import-tree";
     niri = {
-      url = "github:dc-tec/niri-flake";
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
