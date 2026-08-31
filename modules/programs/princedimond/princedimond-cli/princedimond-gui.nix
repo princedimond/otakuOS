@@ -21,6 +21,8 @@
         "ventoy-qt5"
         "steam-unwrapped"
         "steam"
+        "hplip"
+        "hplipWithPlugin"
       ];
       nixpkgs.config.permittedInsecurePackages = [
         "ventoy-1.1.12"
