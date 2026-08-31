@@ -7,6 +7,7 @@
         "discord"
         #"yed"
         "anytype"
+        "anytype-heart"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
