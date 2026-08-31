@@ -25,7 +25,7 @@
 
         shellAliases = {
           fuck = "pay-respects";
-          fr = "`nh os switch \"path:/otakuOS\" --ask";
+          fr = "nh os switch \"path:/otakuOS\" --ask";
           fbr = "nh os boot \"path:/otakuOS\" --ask";
           fu = "nh os switch \"path:/otakuOS\" --ask --update";
           fbu = "nh os boot \"path:/otakuOS\" --ask --update";
