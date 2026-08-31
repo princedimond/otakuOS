@@ -8,6 +8,7 @@
         #"yed"
         "anytype"
         "anytype-heart"
+        "zoom-us"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
