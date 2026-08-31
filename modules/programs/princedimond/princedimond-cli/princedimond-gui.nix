@@ -16,6 +16,7 @@
         "lunacy"
         "davinci-resolve"
         "teamviewer"
+        "warp-terminal"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
