@@ -3,10 +3,6 @@
   flake.modules.nixos.niri =
     { pkgs, ... }:
     {
-      environmment.systempackages = with pkgs; [
-        ly
-      ];
-
       services.displayManager.ly = {
         enable = true;
         settings = {
