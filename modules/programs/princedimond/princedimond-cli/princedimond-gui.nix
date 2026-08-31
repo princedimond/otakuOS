@@ -15,6 +15,7 @@
         "winbox"
         "lunacy"
         "davinci-resolve"
+        "teamviewer"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
