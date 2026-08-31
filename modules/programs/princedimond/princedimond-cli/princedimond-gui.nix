@@ -8,7 +8,7 @@
         #"yed"
         "anytype"
         "anytype-heart"
-        "zoom-us"
+        "zoom"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
@@ -31,7 +31,7 @@
         notesnook
         kdePackages.konversation
         quasselClient
-        zoom-us
+        zoom
         hubstaff
         proton-vpn
         microsoft-edge
