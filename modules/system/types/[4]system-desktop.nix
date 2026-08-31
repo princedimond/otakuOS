@@ -5,6 +5,7 @@
       system-cli
       niri
       catppuccin-gui
+      princedimond-gui
     ];
   };
 
