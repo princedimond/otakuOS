@@ -17,7 +17,7 @@
         stirling-pdf-desktop
         freeplane
         #nputs.nixpkgs-unstable.dia
-        yed
+        #yed
         affine
         anytype
         siyuan
