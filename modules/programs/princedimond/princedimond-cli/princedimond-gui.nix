@@ -12,6 +12,7 @@
         "hubstaff"
         "microsoft-edge"
         "expressvpn"
+        "winbox"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
