@@ -15,7 +15,6 @@
         direnv
         btop
         resources
-        rar
         nh
         dmidecode
         cpu-x
