@@ -6,6 +6,7 @@
       nixpkgs.config.allowUnfreePackages = [
         "discord"
         #"yed"
+        "anytype"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
