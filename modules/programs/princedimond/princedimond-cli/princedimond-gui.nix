@@ -11,6 +11,7 @@
         "zoom"
         "hubstaff"
         "microsoft-edge"
+        "expressvpn"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
