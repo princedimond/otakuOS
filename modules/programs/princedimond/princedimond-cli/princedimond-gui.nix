@@ -13,6 +13,7 @@
         "microsoft-edge"
         "expressvpn"
         "winbox"
+        "lunacy"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
