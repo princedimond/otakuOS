@@ -7,6 +7,7 @@
       home-manager
       nur
       networkManager
+      bluetooth
     ];
   };
 
