@@ -4,6 +4,7 @@
     imports = with inputs.self.modules.nixos; [
       system-base
       ssh
+      princedimond-cli
     ];
   };
 
