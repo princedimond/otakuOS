@@ -17,6 +17,7 @@
         "davinci-resolve"
         "teamviewer"
         "warp-terminal"
+        "ventoy"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
