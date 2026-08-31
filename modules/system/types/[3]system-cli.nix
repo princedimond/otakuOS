@@ -5,6 +5,7 @@
       system-base
       ssh
       princedimond-cli
+      zsh
     ];
   };
 
