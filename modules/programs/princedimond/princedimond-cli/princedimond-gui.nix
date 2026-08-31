@@ -18,6 +18,7 @@
         "teamviewer"
         "warp-terminal"
         "ventoy"
+        "ventoy-qt5"
       ];
       nixpkgs.config.permittedInsecurePackages = [
         "ventoy-1.1.12"
