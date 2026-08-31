@@ -1,0 +1,8 @@
+{ ... }:
+{
+  flake.modules.nixos.niri =
+    { ... }:
+    {
+    };
+
+}
