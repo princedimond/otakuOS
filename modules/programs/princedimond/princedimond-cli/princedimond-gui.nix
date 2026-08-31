@@ -14,6 +14,7 @@
         "expressvpn"
         "winbox"
         "lunacy"
+        "davinci-resolve"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
