@@ -18,6 +18,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-master.url = "github:nixos/nixpkgs";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/nur";
       inputs.nixpkgs.follows = "nixpkgs";
