@@ -19,6 +19,7 @@
         "warp-terminal"
         "ventoy"
         "ventoy-qt5"
+        "steam-unwrapped"
       ];
       nixpkgs.config.permittedInsecurePackages = [
         "ventoy-1.1.12"
