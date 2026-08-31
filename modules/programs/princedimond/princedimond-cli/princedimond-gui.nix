@@ -9,6 +9,7 @@
         "anytype"
         "anytype-heart"
         "zoom"
+        "hubstaff"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
