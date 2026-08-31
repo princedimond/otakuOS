@@ -12,6 +12,7 @@
     imports = with inputs.self.modules.homeManager; [
       system-cli
       catppuccin-gui
+      niri
     ];
   };
 }
