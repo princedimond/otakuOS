@@ -7,7 +7,6 @@
         "unrar"
       ];
       environment.systemPackages = with pkgs; [
-        git
         wget
         curl
         yazi
