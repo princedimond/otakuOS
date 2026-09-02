@@ -7,6 +7,7 @@
       princedimond-cli
       zsh
       catppuccin-cli
+      dev
     ];
   };
 
@@ -14,6 +15,8 @@
     imports = with inputs.self.modules.homeManager; [
       system-base
       catppuccin-cli
+      princedimond-cli
+      dev
     ];
   };
 }
