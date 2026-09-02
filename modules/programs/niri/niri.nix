@@ -18,6 +18,7 @@
         ];
         config = {
           common.default = [ "gnome" ];
+          common."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
         };
       };
       programs.niri.enable = true;
