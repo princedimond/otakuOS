@@ -4,11 +4,11 @@
     networking.hostName = "PD-19KDH72";
 
     imports = with inputs.self.modules.nixos; [
-      system-desktop
+      system-gaming
     ];
 
     home-manager.sharedModules = with inputs.self.modules.homeManager; [
-      system-desktop
+      system-gaming
     ];
   };
 }
