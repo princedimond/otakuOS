@@ -56,21 +56,21 @@
       "Mod+Shift+S".action.screenshot = {
         show-pointer = false;
       };
-      "Mod+Q".action.close-window = {
+      "Mod+Q".action.close-window = [
 
-      };
-      "Mod+Tab".action.next-window = {
+      ];
+      "Mod+Tab".action.next-window = [
 
-      };
-      "Alt+Tab".action.next-window = {
+      ];
+      "Alt+Tab".action.next-window = [
 
-      };
-      "Mod+Shift+Tab".action.previous-window = {
+      ];
+      "Mod+Shift+Tab".action.previous-window = [
 
-      };
-      "Alt+Shift+Tab".action.previous-window = {
+      ];
+      "Alt+Shift+Tab".action.previous-window = [
 
-      };
+      ];
     };
   };
 }
