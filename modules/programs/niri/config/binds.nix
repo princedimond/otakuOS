@@ -57,7 +57,19 @@
         show-pointer = false;
       };
       "Mod+Q".action.close-window = {
-        repeat = false;
+
+      };
+      "Mod+Tab".action.next-window = {
+
+      };
+      "Alt+Tab".action.next-window = {
+
+      };
+      "Mod+Shift+Tab".action.previous-window = {
+
+      };
+      "Alt+Shift+Tab".action.previous-window = {
+
       };
     };
   };
