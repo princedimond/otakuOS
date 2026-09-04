@@ -56,6 +56,9 @@
       "Mod+Shift+S".action.screenshot = {
         show-pointer = false;
       };
+      "Mod+Q".action.close-window = {
+        repeat = false;
+      };
     };
   };
 }
