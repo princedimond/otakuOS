@@ -18,6 +18,7 @@
         #nixd #additional language server / replacement for nil
         marksman
         nixfmt
+        gh
       ];
     };
   flake.modules.homeManager.dev = {
