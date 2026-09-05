@@ -8,17 +8,20 @@
       ];
     };
 
-  flake.modules.homeManager.princedimond-cli = {
-    programs.git = {
-      enable = true;
-      lfs.enable = true;
-      settings = {
-        user = {
-          name = "cacarl";
-          email = "princedimond@gmail.comm";
+  flake.modules.homeManager.princedimond-cli =
+    { pkgs, ... }:
+    {
+      programs.git = {
+        enable = true;
+        lfs.enable = true;
+        settings = {
+          credential.helper = "!${pkgs.gh}/bin/gh auth git-credential";
+          user = {
+            name = "cacarl";
+            email = "princedimond@gmail.com";
+          };
+          fetch.prune = true;
         };
-        fetch.prune = true;
       };
     };
-  };
 }
