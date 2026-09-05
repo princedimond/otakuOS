@@ -2,7 +2,7 @@
 {
   flake-file.inputs = {
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:niri-wm/niri";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
