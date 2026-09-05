@@ -15,6 +15,7 @@
       system-cli
       catppuccin-gui
       niri
+      zen-browser
     ];
   };
 }
