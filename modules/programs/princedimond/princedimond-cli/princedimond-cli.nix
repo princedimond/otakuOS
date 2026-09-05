@@ -8,6 +8,8 @@
       ];
       environment.systemPackages = with pkgs; [
         wget
+        fastfetch
+        onefetch
         curl
         yazi
         pciutils
