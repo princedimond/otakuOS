@@ -15,10 +15,21 @@
           pkgs.xdg-desktop-portal-wlr
         ];
         config = {
-          common.default = [ "gnome" ];
-          common."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-          common."org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
-          common."org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+          common = {
+            default = [
+              "gnome"
+              "gtk"
+            ];
+            "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+          };
+          niri = {
+            default = [
+              "gnome"
+              "gtk"
+            ];
+            "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+            "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+          };
         };
       };
       programs.niri.enable = true;
