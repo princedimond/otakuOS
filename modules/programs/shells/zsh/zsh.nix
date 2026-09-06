@@ -7,6 +7,7 @@
         nh
         rsync
         zsh-autosuggestions
+        zsh-powerlevel10k
       ];
 
       programs.zsh = {
@@ -20,8 +21,10 @@
         '';
 
         promptInit = "
-        source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-      ";
+          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+          source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+          source \"$XDG_CONFIG_HOME\"/zsh/.p10k.zsh
+        ";
 
         shellAliases = {
           fuck = "pay-respects";

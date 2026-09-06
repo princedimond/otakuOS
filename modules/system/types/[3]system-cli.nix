@@ -17,6 +17,7 @@
       catppuccin-cli
       princedimond-cli
       dev
+      zsh
     ];
   };
 }
