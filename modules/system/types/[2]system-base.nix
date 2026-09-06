@@ -8,6 +8,7 @@
       nur
       networkManager
       bluetooth
+      agenix
     ];
   };
 
@@ -15,6 +16,8 @@
     imports = with inputs.self.modules.homeManager; [
       system-core
       nur
+      princedimond
+      agenix
     ];
   };
 }
