@@ -5,6 +5,7 @@
 
     imports = with inputs.self.modules.nixos; [
       system-cli
+      cache-srv
     ];
 
     home-manager.sharedModules = with inputs.self.modules.homeManager; [

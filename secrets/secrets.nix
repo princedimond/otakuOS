@@ -14,4 +14,8 @@ in
 {
   "pdssh-pub.age".publicKeys = all;
   "pdssh-private.age".publicKeys = all;
+  "attic-env.age".publicKeys = [
+    otakuOS-cache
+    princedimond
+  ];
 }
