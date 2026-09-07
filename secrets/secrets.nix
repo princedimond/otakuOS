@@ -18,4 +18,5 @@ in
     otakuOS-cache
     princedimond
   ];
+  "attic-token.age".publicKeys = all;
 }
