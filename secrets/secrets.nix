@@ -3,7 +3,11 @@ let
   users = [ princedimond ];
 
   PD-19KDH72 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJKsrz3NqIX6acofeR4YI2zf6xTqeIVj1eNZ1AQc/iWm";
-  systems = [ PD-19KDH72 ];
+  otakuOS-cache = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKDfjddhDRfflJ5w41XrFVkC8Rf5Xs0RAR7WNs8HN0Ms";
+  systems = [
+    PD-19KDH72
+    otakuOS-cache
+  ];
 
   all = users ++ systems;
 in
