@@ -11,7 +11,6 @@
         fastfetch
         onefetch
         curl
-        yazi
         pciutils
         direnv
         btop
