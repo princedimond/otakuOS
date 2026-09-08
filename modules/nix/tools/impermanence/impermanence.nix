@@ -1,0 +1,27 @@
+{ inputs, ... }:
+{
+  flake.modules.nixos.impermanence =
+    { ... }:
+    {
+      imports = [ inputs.impermanence.nixosModules.impermanence ];
+
+      age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
+
+      environment.persistence."/persist" = {
+        hideMounts = true;
+
+        directories = [
+          "/var/lib/nixos"
+          "/var/log"
+        ];
+
+        files = [
+          "/etc/machine-id"
+          "/etc/ssh/ssh_host_ed25519_key"
+          "/etc/ssh/ssh_host_ed25519_key.pub"
+          "/etc/ssh/ssh_host_rsa_key"
+          "/etc/ssh/ssh_host_rsa_key.pub"
+        ];
+      };
+    };
+}
