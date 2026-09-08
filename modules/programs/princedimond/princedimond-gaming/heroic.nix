@@ -9,9 +9,9 @@
     };
 
   flake.modules.homeManager.princedimond-gaming = {
-    home.file.".config/heroic/CustomThemes/catppuccin-mocha-mauve.css".text =
+    home.file.".config/heroic/CustomThemes/catppuccin-mocha-green.css".text =
       "
-      body.catppuccin-mocha-mauve {
+      body.catppuccin-mocha-green {
         --text-default: #cdd6f4;
         --text-secondary: #bac2de;
         --text-tertiary: #11111b;
@@ -25,7 +25,7 @@
         --controller-hints-background: transparent;
         --current-background: #1e1e2e;
         --modal-background: #11111b;
-        --modal-border: #cba6f7;
+        --modal-border: #a6e3a1;
         --osk-background: #1e1e2e;
         --osk-button-background: #313244;
         --osk-button-border: #11111b;
@@ -34,26 +34,26 @@
 
         --action-icon: #cdd6f4;
         --action-icon-hover: #6c7086;
-        --action-icon-active: #cba6f7;
+        --action-icon-active: #a6e3a1;
         --icons-background: #1e1e2e;
 
-        --brand-primary: #cba6f7;
+        --brand-primary: #a6e3a1;
         --brand-primary-hover: #6c7086;
 
-        --primary-button: #cba6f7;
-        --primary-button-overlay: #cba6f7;
-        --secondary-button: #cba6f7;
-        --secondary-button-overlay: #cba6f7;
-        --tertiary-button: #cba6f7;
-        --tertiary-button-overlay: #cba6f7;
+        --primary-button: #a6e3a1;
+        --primary-button-overlay: #a6e3a1;
+        --secondary-button: #a6e3a1;
+        --secondary-button-overlay: #a6e3a1;
+        --tertiary-button: #a6e3a1;
+        --tertiary-button-overlay: #a6e3a1;
         --success-button: #a6e3a1;
         --disabled-button: #181825;
         --disabled-button-overlay: #11111b;
 
-        --navbar-active: #cba6f7;
+        --navbar-active: #a6e3a1;
         --navbar-inactive: #cdd6f4;
         --navbar-active-background: #313244;
-        --navbar-accent: #cba6f7;
+        --navbar-accent: #a6e3a1;
         --navbar-background: #181825;
         --divider: #181825;
 
@@ -62,14 +62,14 @@
         --danger: #f9e2af;
         --danger-hover: #6c7086;
 
-        --primary: #cba6f7;
-        --secondary: #cba6f7;
-        --accent: #cba6f7;
+        --primary: #a6e3a1;
+        --secondary: #a6e3a1;
+        --accent: #a6e3a1;
 
         --status-success: #a6e3a1;
         --status-warning: #f9e2af;
         --status-danger: #f38ba8;
-        --status-info: #cba6f7;
+        --status-info: #a6e3a1;
 
         --neutral-01: #11111b;
         --neutral-02: #1e1e2e;
@@ -79,10 +79,11 @@
         --neutral-06: #cdd6f4;
       }
 
-      body.catppuccin-mocha-mauve select,
-      body.catppuccin-mocha-mauve input {
+      body.catppuccin-mocha-green select,
+      body.catppuccin-mocha-green input {
         box-shadow: none !important;
       }
-    ";
+
+     ";
   };
 }
