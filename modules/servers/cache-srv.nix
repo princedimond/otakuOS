@@ -15,7 +15,7 @@
       services.atticd = {
         enable = true;
         settings = {
-          listen = "127.0.0.1:3263";
+          listen = "0.0.0.0:3263";
 
           garbage-collection = {
             interval = "12h";
