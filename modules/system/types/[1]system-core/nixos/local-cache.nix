@@ -6,7 +6,7 @@
 
       nix.settings = {
         substituters = [
-          "http://10.10.0.192/otakuOS-cache"
+          "http://10.10.0.192:3263/otakuOS-cache"
         ];
 
         trusted-public-keys = [
@@ -20,7 +20,7 @@
           export PATH="${pkgs.attic-client}/bin:$PATH"
 
           TOKEN=$(${pkgs.gawk}/bin/awk '/^password/ {print $2}' ${config.age.secrets.attic-token.path})
-          attic login otakuOS-cache http://10.10.0.192 "$TOKEN"
+          attic login otakuOS-cache http://10.10.0.192:3263 "$TOKEN"
           attic push otakuOS-cache $OUT_PATHS
         '';
       };
