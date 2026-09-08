@@ -12,6 +12,7 @@
           file = ../../secrets/attic-env.age;
         };
       };
+      networking.firewall.allowedTCPPorts = [ 3263 ];
       services.atticd = {
         enable = true;
         settings = {
