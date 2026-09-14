@@ -17,7 +17,7 @@
         "tampermonkey"
       ];
       home.file."catppuccin-zen" = {
-        target = ".config/zen/aqua/chrome/catppuccin-zen";
+        target = ".config/zen/princedimond/chrome/catppuccin-zen";
         source = (
           fetchTarball {
             url = "https://github.com/catppuccin/zen-browser/tarball/c855685442c6040c4dda9c8d3ddc7b708de1cbaa";
@@ -44,6 +44,19 @@
             Fingerprinting = true;
           };
         };
+
+        /*
+          programs.firefoxpwa = {
+            enable = true;
+            pwas = {
+              Tinkercad = {
+                url = "https://www.tinkercad.com/dashboard";
+                icon = "https://static.tinkercad.com/images/tinkercad-lockup-white.svg";
+              };
+
+            };
+          };
+        */
 
         profiles.princedimond = {
           settings = {
@@ -84,10 +97,10 @@
               id = "72fdd687-6673-4248-aab6-4ccafeda8183";
               position = 1000;
             };
-            "Funnyjunk" = {
+            "3D Print" = {
               id = "3bff9140-f9f2-40a2-9e4b-e7b3e591c62c";
               position = 2000;
-              icon = "🙂";
+              icon = "🛠️";
             };
             "Youtube" = {
               id = "1b3c04de-bc74-44fb-bcec-ebe1612547f6";
