@@ -20,7 +20,10 @@ end = [
 ]
 layer = "overlay"
 margin_ends = 0
-start = [ "launcher", "wallpaper" ]
+start = [ "launcher", "wallpaper", "cpu", "ram", "temp", "weather" ]
+
+[battery.device."/org/freedesktop/UPower/devices/battery_hidpp_battery_0"]
+warning_threshold = 10
 
 [control_center]
 sidebar = "full"
@@ -96,7 +99,7 @@ enabled = true
 icon_size = 16
 launcher_custom_image = "/home/princedimond/Pictures/オタク　Productions/favicon.png"
 launcher_position = "start"
-pinned = [ "thunar", "com.mitchellh.ghostty", "zen-beta", "anytype", "ferdium" ]
+pinned = [ "thunar", "com.mitchellh.ghostty", "zen-beta", "anytype", "ferdium", "dev.zed.Zed" ]
 show_dots = true
 smart_auto_hide = true
 
