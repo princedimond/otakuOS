@@ -80,7 +80,6 @@
         cheese
         kooha
         bitwarden-desktop
-        thunar
         gnome-disk-utility
         system-config-printer
         naps2
