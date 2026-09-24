@@ -11,6 +11,7 @@
   flake.modules.homeManager.princedimond-cli = {
     programs.yazi = {
       enable = true;
+      enableZshIntegration = true;
     };
   };
 }
