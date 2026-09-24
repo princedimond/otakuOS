@@ -18,8 +18,6 @@
         "warp-terminal"
         "ventoy"
         "ventoy-qt5"
-        "steam-unwrapped"
-        "steam"
         "hplip"
         "hplipWithPlugin"
         "cisco-packet-tracer"
@@ -33,7 +31,6 @@
         ferdium
         discord
         #element-desktop
-        thunderbird
         onlyoffice-desktopeditors
         #kdePackages.calligra
         libreoffice-qt-fresh
@@ -99,12 +96,8 @@
         wl-clipboard
         rpi-imager
         appimage-run
-        xivlauncher
-        steam
-        heroic
-        umu-launcher
-        protonup-ng
-        protonup-qt
+        #protonup-ng
+        #protonup-qt
         hplipWithPlugin
         hplip
         wine

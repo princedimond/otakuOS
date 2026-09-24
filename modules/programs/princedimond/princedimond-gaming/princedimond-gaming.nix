@@ -14,6 +14,8 @@
 
       environment.systemPackages = with pkgs; [
         parsec-bin
+        umu-launcher
+        xivlauncher
       ];
     };
 }
