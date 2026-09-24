@@ -15,7 +15,6 @@
         "winbox"
         "lunacy"
         "davinci-resolve"
-        "teamviewer"
         "warp-terminal"
         "ventoy"
         "ventoy-qt5"
