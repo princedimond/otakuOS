@@ -10,6 +10,9 @@
         wget
         fastfetch
         onefetch
+        cpufetch
+        ramfetch
+        microfetch
         curl
         pciutils
         direnv
