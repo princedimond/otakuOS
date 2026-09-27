@@ -7,6 +7,7 @@
       catppuccin-gui
       princedimond-gui
       zen-browser
+      theme-general
     ];
   };
 
@@ -17,6 +18,7 @@
       niri
       zen-browser
       princedimond-gui
+      theme-general
     ];
   };
 }
