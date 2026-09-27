@@ -14,8 +14,8 @@ end = [
     "volume",
     "brightness",
     "battery",
-    "control-center",
     "clock",
+    "control-center",
     "session"
 ]
 layer = "overlay"
