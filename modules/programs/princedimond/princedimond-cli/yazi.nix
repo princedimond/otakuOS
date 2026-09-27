@@ -8,13 +8,15 @@
       ];
     };
 
-  flake.modules.homeManager.princedimond-cli = {
-    programs.yazi = {
-      enable = true;
-      enableZshIntegration = true;
-      plugins = with pkgs.yaziPlugins; {
-        git.package = git;
+  flake.modules.homeManager.princedimond-cli =
+    { pkgs, ... }:
+    {
+      programs.yazi = {
+        enable = true;
+        enableZshIntegration = true;
+        plugins = with pkgs.yaziPlugins; {
+          git.package = git;
+        };
       };
     };
-  };
 }
