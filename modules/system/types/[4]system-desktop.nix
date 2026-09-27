@@ -16,6 +16,7 @@
       catppuccin-gui
       niri
       zen-browser
+      princedimond-gui
     ];
   };
 }
