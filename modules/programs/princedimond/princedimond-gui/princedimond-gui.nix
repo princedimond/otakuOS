@@ -27,7 +27,6 @@
         "ventoy-qt5-1.1.12"
       ];
       environment.systemPackages = with pkgs; [
-        ghostty
         ferdium
         discord
         #element-desktop
