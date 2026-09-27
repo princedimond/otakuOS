@@ -24,6 +24,7 @@
           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
           source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
           source \"$XDG_CONFIG_HOME\"/zsh/.p10k.zsh
+          source \"$XDG_CONFIG_HOME\"/zsh/ghostty-colors.zsh
         ";
 
         shellAliases = {
