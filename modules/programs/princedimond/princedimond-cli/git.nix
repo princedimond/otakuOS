@@ -9,13 +9,16 @@
     };
 
   flake.modules.homeManager.princedimond-cli =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
+      age.secrets.git-credentials.file = ../../../../secrets/git-credentials.age;
+      home.file.".git-credentials".source =
+        config.lib.file.mkOutOfStoreSymlink config.age.secrets.git-credentials.path;
       programs.git = {
         enable = true;
         lfs.enable = true;
         settings = {
-          credential.helper = "!${pkgs.gh}/bin/gh auth git-credential";
+          credential.helper = "store";
           user = {
             name = "cacarl";
             email = "princedimond@gmail.com";

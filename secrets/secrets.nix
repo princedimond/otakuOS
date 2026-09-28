@@ -14,6 +14,7 @@ let
   all = users ++ systems;
 in
 {
+  "git-credentials.age".publicKeys = all;
   "pdssh-pub.age".publicKeys = all;
   "pdssh-private.age".publicKeys = all;
   "attic-env.age".publicKeys = [
