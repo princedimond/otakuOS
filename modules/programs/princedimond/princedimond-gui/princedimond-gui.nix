@@ -20,7 +20,6 @@
         "ventoy-qt5"
         "hplip"
         "hplipWithPlugin"
-        "cisco-packet-tracer"
       ];
       nixpkgs.config.permittedInsecurePackages = [
         "ventoy-1.1.12"
@@ -104,7 +103,6 @@
         wine-wayland
         thunderbolt
         solaar
-        cisco-packet-tracer_9
       ];
     };
 }
