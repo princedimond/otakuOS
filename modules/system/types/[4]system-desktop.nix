@@ -8,6 +8,7 @@
       princedimond-gui
       zen-browser
       theme-general
+      linux-cachyos
     ];
   };
 
