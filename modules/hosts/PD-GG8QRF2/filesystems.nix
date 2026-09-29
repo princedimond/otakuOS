@@ -8,6 +8,8 @@
 
     boot.initrd.luks.devices."luks-966b779e-7201-4fdb-9c70-f19c15d9c345".device =
       "/dev/disk/by-uuid/966b779e-7201-4fdb-9c70-f19c15d9c345";
+    boot.initrd.luks.devices."luks-3a860ec2-ea71-40fc-9dfd-a2f07ee00cc6".device =
+      "/dev/disk/by-uuid/3a860ec2-ea71-40fc-9dfd-a2f07ee00cc6";
 
     fileSystems."/home" = {
       device = "/dev/mapper/luks-966b779e-7201-4fdb-9c70-f19c15d9c345";
