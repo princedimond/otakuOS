@@ -5,10 +5,12 @@ let
   PD-19KDH72 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJKsrz3NqIX6acofeR4YI2zf6xTqeIVj1eNZ1AQc/iWm";
   otakuOS-cache = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKDfjddhDRfflJ5w41XrFVkC8Rf5Xs0RAR7WNs8HN0Ms";
   PD-GG8QRF2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKK0FXDJdEEXAqnkXOpCtkNkquUolSfoSIV2lZmQNiBp";
+  master = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEeKlYvEId5/wJqCP+ueoCSQuwcEG958d5G0IoAd2HJi";
   systems = [
     PD-19KDH72
     PD-GG8QRF2
     otakuOS-cache
+    master
   ];
 
   all = users ++ systems;
@@ -17,9 +19,16 @@ in
   "git-credentials.age".publicKeys = all;
   "pdssh-pub.age".publicKeys = all;
   "pdssh-private.age".publicKeys = all;
+  "iso-master-pub.age".publicKeys = all;
+  "iso-master-key.age".publicKeys = [
+    princedimond
+    PD-GG8QRF2
+    master
+  ];
   "attic-env.age".publicKeys = [
     otakuOS-cache
     princedimond
+    master
   ];
   "attic-token.age".publicKeys = all;
 }
