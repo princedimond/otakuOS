@@ -17,7 +17,7 @@
         enable = true;
         settings = {
           listen = "0.0.0.0:3263";
-          database.url = "sqlite:///var/lib/atticd/server.db?mode=rwc&timeout=60";
+          database.url = "sqlite:///var/lib/atticd/server.db?mode=rwc&_pragma=busy_timeout(60000)";
 
           garbage-collection = {
             interval = "12h";
