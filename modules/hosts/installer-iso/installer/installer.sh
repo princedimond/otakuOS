@@ -16,79 +16,142 @@ fi
 #Init Variables
 echo -e "\n\e[32m[INSTALL] INITIALIZING VARIABLES\e[0m"
 configSource="git@gitlab.com:princedimond/otakuos.git"
+configBranch="main"
 configName="otakuOS"
 newHostname=""
 systemType=""
 installDisk=""
 installDiskID=""
+shouldEncrypt=false
 
-#Obtain initial deps
-echo -e "\n\e[32m[INSTALL] INITIALIZING DEPENDANCIES\e[0m"
-sudo -u "$SUDO_USER" mkdir -p /tmp/installer
-sudo -u "$SUDO_USER" git clone --recurse-submodules $configSource /tmp/installer/$configName
+#Init functions
+initializeDependencies() {
+  echo -e "\n\e[32m[INSTALL] INITIALIZING DEPENDANCIES\e[0m"
+  rm -rf /tmp/installer
+  sudo -u "$SUDO_USER" mkdir -p /tmp/installer
+  sudo -u "$SUDO_USER" git clone -b $configBranch --recurse-submodules $configSource /tmp/installer/$configName
+}
 
-#Ask user about required configuration
-echo -e "\n\e[32m[INSTALL] ASKING FOR REQUIRED INFORMATION\e[0m"
-echo "What is the hostname of this machine?"
-read newHostname
-echo
-echo "Available types:"
-#Parse the available system types from the config
-ls /tmp/installer/$configName/modules/system/types/ | cut -c 4- | sed 's/\.nix$//'
-echo "What system type do you want to use?"
-read systemType
-echo
-echo "Available Disks:"
-lsblk --nodeps --noheadings --output NAME,SIZE,MODEL
-echo "What disk do you want to install onto?"
-read installDisk
-echo
-echo "You chose:"
-echo "Hostname - " $newHostname
-echo "System Type - " $systemType
-echo "Install Disk - " $installDisk
-echo "Is this correct? (y/n)"
-read confirmation
-if [[ $confirmation != "y" ]]; then
-  echo "Aborting installation"
-  exit 1
-fi
+listSystemTypes() {
+  ls "/tmp/installer/$configName/modules/system/types/" | cut -c 4- | sed 's/\.nix$//'
+}
 
-#Log start of automated install
-echo -e "\n\e[32m[INSTALL] BEGINNING INSTALL PROCESS\e[0m"
+askForConfig() {
+  echo -e "\n\e[32m[INSTALL] ASKING FOR REQUIRED INFORMATION\e[0m"
+  echo "What is the hostname of this machine?"
+  read newHostname
+  echo
+  echo "Available types:"
+  #Parse the available system types from the config
+  listSystemTypes
+  echo "What system type do you want to use? (will be ignored if host config already exists)"
+  read systemType
+  echo
+  echo "Available Disks:"
+  lsblk --nodeps --noheadings --output NAME,SIZE,MODEL
+  echo "What disk do you want to install onto?"
+  read installDisk
+  echo
+  echo "Do you want to encrypt the disk? (y/n)"
+  read encryptChoice
+  if [[ $encryptChoice == "y" ]]; then
+    shouldEncrypt=true
+  else
+    shouldEncrypt=false
+  fi
+}
 
-#Grab install disk ID
-installDiskID="/dev/$(udevadm info --query=symlink --name="/dev/$installDisk" | tr ' ' '\n' | grep '^disk/by-id/' | head -n1)"
+confirmConfig() {
+  #Check if disk or system type actually exists
+  if [[ ! -b "/dev/$installDisk" ]]; then
+    echo -e "\n\e[31m[INSTALL] ERROR: DISK $installDisk DOES NOT EXIST\e[0m"
+    getConfigVars
+  elif ! listSystemTypes | grep -qxF "$systemType"; then
+    echo -e "\n\e[31m[INSTALL] ERROR: SYSTEM TYPE $systemType DOES NOT EXIST\e[0m"
+    getConfigVars
+  else
+  #Confirm the configuration with the user
+    echo -e "\n\e[32m[INSTALL] CONFIRMING CONFIGURATION\e[0m"
+    echo "You chose:"
+    echo "Hostname - " $newHostname
+    echo "System Type - " $systemType
+    echo "Install Disk - " $installDisk
+    echo "Encrypted - " $shouldEncrypt
+    echo "Is this correct? (y/n)"
+    read confirmation
+    if [[ $confirmation != "y" ]]; then
+      getConfigVars
+    fi
+  fi
+}
 
-#Generate keys for new system
-echo -e "\n\e[32m[INSTALL] GENERATING NEW SYSTEM KEYS\e[0m"
-mkdir -p /tmp/installer/keys
-ssh-keygen -t ed25519 -f /tmp/installer/keys/id_ed25519 -N ""
+getConfigVars() {
+  askForConfig
+  confirmConfig
+}
 
-#Roll SSH keys for new system into secrets.nix in config
-echo -e "\n\e[32m[INSTALL] UPDATING SECRETS.NIX\e[0m"
-export newKey=$(echo "  "$newHostname = \"$(cat /tmp/installer/keys/id_ed25519.pub | sed 's/ [^ ]*$//')\"";")
-sed -i "s|^[[:space:]][[:space:]]systems =|$newKey\n&|" /tmp/installer/$configName/secrets/secrets.nix
-sed -i "s/\(systems = \[[^]]*\) ];/\1 $newHostname ];/" /tmp/installer/$configName/secrets/secrets.nix
+prepAutoInstall() {
+  #Log start of automated install
+  echo -e "\n\e[32m[INSTALL] BEGINNING INSTALL PROCESS\e[0m"
 
-#Re-key all secrets
-echo -e "\e[32m[INSTALL] RE-KEYING ALL SECRETS\e[0m"
-pushd /tmp/installer/$configName/secrets/
-agenix --rekey --identity /etc/ssh/ssh_host_ed25519_key
-popd
+  #Grab install disk ID
+  installDiskID="/dev/$(udevadm info --query=symlink --name="/dev/$installDisk" | tr ' ' '\n' | grep '^disk/by-id/' | head -n1)"
+}
 
-#Generate per-host config for new system
-echo -e "\n\e[32m[INSTALL] GENERATING PER-HOST CONFIG\e[0m"
-mkdir -p /tmp/installer/$configName/modules/hosts/$newHostname
-#Generate flake-parts.nix for new system
+generateSSHKeys() {
+  echo -e "\n\e[32m[INSTALL] GENERATING SSH KEYS\e[0m"
+  sudo -u "$SUDO_USER" mkdir -p /tmp/installer/keys
+  sudo -u "$SUDO_USER" ssh-keygen -t ed25519 -f /tmp/installer/keys/id_ed25519 -N ""
+}
+
+rekeyAllSecrets() {
+  #Roll SSH keys for new system into secrets.nix in config
+  echo -e "\n\e[32m[INSTALL] UPDATING SECRETS.NIX\e[0m"
+  secretsFile="/tmp/installer/$configName/secrets/secrets.nix"
+  pubkey=$(sed 's/ [^ ]*$//' /tmp/installer/keys/id_ed25519.pub)
+  if grep -q "^[[:space:]]*$newHostname = " "$secretsFile"; then
+    sed -i "s|^\([[:space:]]*$newHostname = \).*|\1\"$pubkey\";|" "$secretsFile"
+  else
+    newKey="  $newHostname = \"$pubkey\";"
+    sed -i "s|^[[:space:]][[:space:]]systems =|$newKey\n&|" "$secretsFile"
+    sed -i "s/\(systems = \[[^]]*\) ];/\1 $newHostname ];/" "$secretsFile"
+  fi
+
+  #Re-key all secrets
+  echo -e "\e[32m[INSTALL] RE-KEYING ALL SECRETS\e[0m"
+  pushd /tmp/installer/$configName/secrets/
+  agenix --rekey --identity /etc/ssh/ssh_host_ed25519_key
+  popd
+}
+
+generateFlakeParts() {
 cat << EOF > /tmp/installer/$configName/modules/hosts/$newHostname/flake-parts.nix
 { inputs, ... }:
 {
   flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "$newHostname";
 }
 EOF
-#Generate filesystem.nix for new system
-cat << EOF > /tmp/installer/$configName/modules/hosts/$newHostname/filesystem.nix
+}
+
+generateFilesystemConfigEncrypted() {
+cat << EOF > /tmp/installer/$configName/modules/hosts/$newHostname/filesystems.nix
+{ inputs, ... }:
+{
+  flake.modules.nixos.$newHostname =
+    { pkgs, config, ... }:
+    {
+      imports = with inputs.self.modules.nixos; [
+        disko-encrypted
+      ];
+
+      disko.device = "$installDiskID";
+    };
+}
+EOF
+}
+
+generateFilesystemConfigUnencrypted() {
+cat << EOF > /tmp/installer/$configName/modules/hosts/$newHostname/filesystems.nix
 { inputs, ... }:
 {
   flake.modules.nixos.$newHostname =
@@ -102,7 +165,17 @@ cat << EOF > /tmp/installer/$configName/modules/hosts/$newHostname/filesystem.ni
     };
 }
 EOF
-#Generate configuration.nix for new system
+}
+
+generateFilesystemConfig() {
+  if [[ $shouldEncrypt == true ]]; then
+    generateFilesystemConfigEncrypted
+  else
+    generateFilesystemConfigUnencrypted
+  fi
+}
+
+generateMainConfig() {
 cat << EOF > /tmp/installer/$configName/modules/hosts/$newHostname/configuration.nix
 { inputs, ... }:
 {
@@ -119,7 +192,9 @@ cat << EOF > /tmp/installer/$configName/modules/hosts/$newHostname/configuration
   };
 }
 EOF
-#Generate hardware.nix for new system
+}
+
+generateHardwareConfig() {
 cat << EOF > /tmp/installer/$configName/modules/hosts/$newHostname/hardware.nix
 { ... }:
 {
@@ -131,26 +206,59 @@ $(sudo nixos-generate-config --no-filesystems --show-hardware-config \
   };
 }
 EOF
+}
+
+generateNewHostConfig() {
+  #Generate per-host config for system
+  echo -e "\n\e[32m[INSTALL] GENERATING PER-HOST CONFIG\e[0m"
+
+  #Check if host already exists or not
+  if [[ -d /tmp/installer/$configName/modules/hosts/$newHostname ]]; then
+    #Host already exists, only generate hardware and filesystem configs
+    generateHardwareConfig
+    generateFilesystemConfig
+  else
+    #Host does not exist, generate all configs
+    mkdir -p /tmp/installer/$configName/modules/hosts/$newHostname
+    generateFlakeParts
+    generateHardwareConfig
+    generateFilesystemConfig
+    generateMainConfig
+  fi
+}
+
+partitionDisk() {
+  echo -e "\n\e[32m[INSTALL] PARTITIONING DISK WITH DISKO\e[0m"
+  nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko --flake "path:/tmp/installer/$configName#$newHostname"
+}
+
+installConfig() {
+  echo -e "\n\e[32m[INSTALL] INSTALLING CONFIG ONTO NEW SYSTEM\e[0m"
+  nixos-install --root /mnt --flake "path:/tmp/installer/$configName#$newHostname" --no-root-password
+}
+
+loadFilesOnSystem() {
+  #Move config onto new system
+  echo -e "\n\e[32m[INSTALL] MOVING CONFIG ONTO NEW SYSTEM\e[0m"
+  cp -r "/tmp/installer/$configName" "/mnt/$configName"
+
+  #Move SSH keys onto new system
+  echo -e "\n\e[32m[INSTALL] MOVING SSH KEYS ONTO NEW SYSTEM\e[0m"
+  mkdir -p /mnt/etc/ssh
+  cp /tmp/installer/keys/id_ed25519 /mnt/etc/ssh/ssh_host_ed25519_key
+  cp /tmp/installer/keys/id_ed25519.pub /mnt/etc/ssh/ssh_host_ed25519_key.pub
+  chmod 0600 /mnt/etc/ssh/ssh_host_ed25519_key
+  chmod 0644 /mnt/etc/ssh/ssh_host_ed25519_key.pub
+}
 
 
-#Partition new system
-echo -e "\n\e[32m[INSTALL] PARTITIONING DISK WITH DISKO\e[0m"
-nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko --flake "path:/tmp/installer/$configName#$newHostname"
-
-#Install config onto new system
-echo -e "\n\e[32m[INSTALL] INSTALLING NEW SYSTEM\e[0m"
-nixos-install --root /mnt --flake "path:/tmp/installer/$configName#$newHostname" --no-root-password
-
-#Move config onto new system
-echo -e "\n\e[32m[INSTALL] MOVING CONFIG ONTO NEW SYSTEM\e[0m"
-cp -r "/tmp/installer/$configName" "/mnt/$configName"
-
-#Move SSH keys onto new system
-echo -e "\n\e[32m[INSTALL] MOVING SSH KEYS ONTO NEW SYSTEM\e[0m"
-mkdir -p /mnt/etc/ssh
-cp /tmp/installer/keys/id_ed25519 /mnt/etc/ssh/ssh_host_ed25519_key
-cp /tmp/installer/keys/id_ed25519.pub /mnt/etc/ssh/ssh_host_ed25519_key.pub
-chmod 0600 /mnt/etc/ssh/ssh_host_ed25519_key
-chmod 0644 /mnt/etc/ssh/ssh_host_ed25519_key.pub
-
-#Finalize anything else
+#Run through functions
+initializeDependencies
+getConfigVars
+prepAutoInstall
+generateSSHKeys
+rekeyAllSecrets
+generateNewHostConfig
+partitionDisk
+installConfig
+loadFilesOnSystem
