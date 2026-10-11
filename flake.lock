@@ -342,6 +342,26 @@
         "type": "github"
       }
     },
+    "nix-craftapps": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791540118,
+        "narHash": "sha256-GHAjutOIsjA7kzusttluaftJH0yBT53LMiFpm6Nvd8o=",
+        "owner": "olafkfreund",
+        "repo": "nix-craftapps",
+        "rev": "f93a6e61de21143bf54785adaefa5b4d9d1b3e1f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "olafkfreund",
+        "repo": "nix-craftapps",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1790698522,
@@ -540,6 +560,7 @@
         "import-tree": "import-tree",
         "niri": "niri",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
+        "nix-craftapps": "nix-craftapps",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
