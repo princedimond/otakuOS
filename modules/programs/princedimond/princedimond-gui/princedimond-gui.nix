@@ -103,6 +103,7 @@
         wine-wayland
         thunderbolt
         solaar
+        kdiff3
       ];
     };
 }
