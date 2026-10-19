@@ -10,7 +10,7 @@
         ];
 
         trusted-public-keys = [
-          "otakuOS-cache:oe9JlLaInZD/a4I2wnzZEftEW+/FjzOdlFJ3Ueg//7E="
+          "otakuOS-cache:hKAgmVX/LzS2sMqZ7dHsPuWncXRPD5UBF68FWvM3wCs="
         ];
         netrc-file = config.age.secrets.attic-token.path;
 
