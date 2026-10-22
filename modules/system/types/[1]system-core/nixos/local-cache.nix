@@ -10,7 +10,7 @@
         ];
 
         trusted-public-keys = [
-          "otakuOS-cache:hKAgmVX/LzS2sMqZ7dHsPuWncXRPD5UBF68FWvM3wCs="
+          "otakuOS-cache:eWlnqPfM6EsqN8if55rbNeXoY9HZvZ641djU9g9wbM8="
         ];
 
         /*
