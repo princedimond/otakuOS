@@ -7,7 +7,7 @@
         enable = true;
         package = pkgs.postgresql_16;
 
-        ensureDatabases = [ "attic" ];
+        ensureDatabases = [ "atticd" ];
 
         # Create the database user and grant permissions
         ensureUsers = [

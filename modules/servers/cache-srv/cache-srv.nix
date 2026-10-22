@@ -9,7 +9,7 @@
       ];
       age.secrets = {
         attic-env = {
-          file = ../../secrets/attic-env.age;
+          file = ../../../secrets/attic-env.age;
         };
       };
       networking.firewall.allowedTCPPorts = [ 3263 ];
@@ -17,7 +17,7 @@
         enable = true;
         settings = {
           listen = "0.0.0.0:3263";
-          database.url = "postgresql://atticd@localhost/attic";
+          database.url = "postgresql://atticd@localhost/atticd?host=/run/postgresql";
           #database.url = "sqlite:///var/lib/atticd/server.db?mode=rwc&_pragma=busy_timeout(60000)";
 
           garbage-collection = {
