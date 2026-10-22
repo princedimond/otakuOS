@@ -9,6 +9,13 @@
       installer-iso-keys
     ];
 
+    nix.daemonCPUSchedPolicy = "idle";
+
+    nix.settings = {
+      #cores = 1;
+      max-jobs = 1;
+    };
+
     home-manager.sharedModules = with inputs.self.modules.homeManager; [
       system-desktop
     ];
