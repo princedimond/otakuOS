@@ -17,6 +17,7 @@
         enable = true;
         settings = {
           listen = "0.0.0.0:3263";
+          database.url = "postgresql://atticd@localhost/attic";
           #database.url = "sqlite:///var/lib/atticd/server.db?mode=rwc&_pragma=busy_timeout(60000)";
 
           garbage-collection = {
