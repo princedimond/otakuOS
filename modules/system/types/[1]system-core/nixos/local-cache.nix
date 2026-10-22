@@ -46,7 +46,7 @@
         script = ''
           TOKEN=$(awk '/^password/ {print $2}' ${config.age.secrets.attic-token.path})
           attic login otakuOS-cache http://10.10.0.192:3263 "$TOKEN"
-          exec attic watch-store otakuOS-cache
+          exec attic watch-store -j 1 otakuOS-cache
         '';
       };
     };
