@@ -1,0 +1,6 @@
+[submodule "otakuos-assets"]
+	path = otakuos-assets
+	url = git@gitlab.com:princedimond/otakuos-assets.git
+[submodule "otakuOS-assets"]
+	path = otakuOS-assets
+	url = git@gitlab.com:princedimond/otakuOS-assets
