@@ -251,6 +251,13 @@ loadFilesOnSystem() {
   chmod 0644 /mnt/etc/ssh/ssh_host_ed25519_key.pub
 }
 
+fixPermissionsOnConfig() {
+  #Fix permissions on config
+  echo -e "\n\e[32m[INSTALL] FIXING PERMISSIONS ON CONFIG\e[0m"
+  chown -R root:wheel /mnt/$configName
+  find /mnt/$configName -type d -exec chmod 775 {} \;
+  find /mnt/$configName -type f -exec chmod 664 {} \;
+}
 
 #Run through functions
 initializeDependencies
@@ -262,3 +269,4 @@ generateNewHostConfig
 partitionDisk
 installConfig
 loadFilesOnSystem
+fixPermissionsOnConfig
