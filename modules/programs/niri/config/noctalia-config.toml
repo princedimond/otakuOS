@@ -28,70 +28,71 @@ warning_threshold = 10
 [control_center]
 sidebar = "full"
 
-# [desktop_widgets]
-# schema_version = 2
-# widget_order = [
-#     "desktop-widget-0000000000000001",
-#     "desktop-widget-0000000000000002",
-#     "desktop-widget-0000000000000003",
-#     "desktop-widget-0000000000000004"
-# ]
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = [
+    "desktop-widget-0000000000000001",
+    "desktop-widget-0000000000000002",
+    "desktop-widget-0000000000000003",
+    "desktop-widget-0000000000000004"
+]
 
-    # [desktop_widgets.grid]
-    # cell_size = 8
-    # major_interval = 4
-    # visible = true
+    [desktop_widgets.grid]
+    cell_size = 8
+    major_interval = 4
+    visible = true
 
-    # [desktop_widgets.widget.desktop-widget-0000000000000001]
-    # box_height = 128.0
-    # box_width = 224.0
-    # cx = 1088.0
-    # cy = 672.0
-    # output = "eDP-1"
-    # placement_height = 1080.0
-    # placement_width = 1920.0
-    # rotation = 0.0
-    # type = "weather"
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 128.0
+    box_width = 224.0
+    cx = 1450.666748046875
+    cy = 896.0
+    output = "eDP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "weather"
 
-    # [desktop_widgets.widget.desktop-widget-0000000000000002]
-    # box_height = 0.0
-    # box_width = 0.0
-    # cx = 1104.0
-    # cy = 798.0
-    # output = "eDP-1"
-    # placement_height = 1080.0
-    # placement_width = 1920.0
-    # rotation = 0.0
-    # type = "sysmon"
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1472.0
+    cy = 1064.0
+    output = "eDP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "sysmon"
 
-    #     [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
-    #     stat = "cpu_usage"
-    #     stat2 = "cpu_temp"
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        stat = "cpu_usage"
+        stat2 = "cpu_temp"
 
-    # [desktop_widgets.widget.desktop-widget-0000000000000003]
-    # box_height = 0.0
-    # box_width = 0.0
-    # cx = 1386.0
-    # cy = 714.0
-    # output = "eDP-1"
-    # placement_height = 1080.0
-    # placement_width = 1920.0
-    # rotation = 0.0
-    # type = "fancy_audio_visualizer"
+    [desktop_widgets.widget.desktop-widget-0000000000000003]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1848.0
+    cy = 952.0
+    output = "eDP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
 
-    #     [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
-    #     background = false
+        [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+        background = false
 
-    # [desktop_widgets.widget.desktop-widget-0000000000000004]
-    # box_height = 0.0
-    # box_width = 0.0
-    # cx = 1373.0
-    # cy = 432.0
-    # output = "eDP-1"
-    # placement_height = 1080.0
-    # placement_width = 1920.0
-    # rotation = 0.0
-    # type = "media_player"
+    [desktop_widgets.widget.desktop-widget-0000000000000004]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1830.666748046875
+    cy = 576.0
+    output = "eDP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "media_player"
 
 [dock]
 background_opacity = 0.4999999888241291
@@ -175,13 +176,14 @@ source = "builtin"
 wallpaper_scheme = "m3-content"
 
 [wallpaper]
-fill_mode = "fit"
+directory = "/home/princedimond/Pictures/Wallpapers"
+fill_mode = "fill"
 
     [wallpaper.default]
-    path = "color:#000000"
+    path = "/home/princedimond/Pictures/Wallpapers/nix-matrix.png"
 
     [wallpaper.last]
-    path = "color:#000000"
+    path = "/home/princedimond/Pictures/Wallpapers/nix-matrix.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "color:#000000"
+    path = "/home/princedimond/Pictures/Wallpapers/nix-matrix.png"

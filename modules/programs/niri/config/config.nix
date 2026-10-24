@@ -10,6 +10,7 @@
     xdg.configFile."niri/input.kdl".source = ./kdls/input.kdl;
     xdg.configFile."niri/windowrules.kdl".source = ./kdls/windowrules.kdl;
     xdg.configFile."niri/animations.kdl".source = ./kdls/animations.kdl;
-    xdg.configFile."noctalia/noctalia-config.toml".source = ./noctalia-config.toml;
+    xdg.configFile."noctalia/config.toml".source = ./noctalia-config.toml;
+    home.file."Pictures/Wallpapers".source = ../../../../otakuOS-assets/Wallpapers;
   };
 }
