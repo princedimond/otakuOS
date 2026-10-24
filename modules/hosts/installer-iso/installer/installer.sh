@@ -109,12 +109,21 @@ rekeyAllSecrets() {
   echo -e "\n\e[32m[INSTALL] UPDATING SECRETS.NIX\e[0m"
   secretsFile="/tmp/installer/$configName/secrets/secrets.nix"
   pubkey=$(sed 's/ [^ ]*$//' /tmp/installer/keys/id_ed25519.pub)
+
+  #Set or add the key line
   if grep -q "^[[:space:]]*$newHostname = " "$secretsFile"; then
     sed -i "s|^\([[:space:]]*$newHostname = \).*|\1\"$pubkey\";|" "$secretsFile"
   else
     newKey="  $newHostname = \"$pubkey\";"
     sed -i "s|^[[:space:]][[:space:]]systems =|$newKey\n&|" "$secretsFile"
-    sed -i "s/\(systems = \[[^]]*\) ];/\1 $newHostname ];/" "$secretsFile"
+  fi
+
+  #Ensure it's in the systems list
+  if ! sed -n '/^[[:space:]]*systems = \[/,/^[[:space:]]*\];/p' "$secretsFile" \
+       | grep -qx "[[:space:]]*$newHostname"; then
+    sed -i "/^[[:space:]]*systems = \[/,/^[[:space:]]*\];/{
+      /^[[:space:]]*\];/i\\    $newHostname
+    }" "$secretsFile"
   fi
 
   #Re-key all secrets
