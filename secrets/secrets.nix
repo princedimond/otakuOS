@@ -6,11 +6,13 @@ let
   otakuOS-cache = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKkXrsT1UhYzWB4t7lpvZiauDZG8b6xcJx6oYz+8Bj4K";
   PD-GG8QRF2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKK0FXDJdEEXAqnkXOpCtkNkquUolSfoSIV2lZmQNiBp";
   master = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEeKlYvEId5/wJqCP+ueoCSQuwcEG958d5G0IoAd2HJi";
+  PD-5CG84633PQ = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA2uqpaW2WpHOmR+QXDzyeCY92h2mhLCwmzBO9m3xU7t";
   systems = [
     PD-19KDH72
     PD-GG8QRF2
     otakuOS-cache
     master
+    PD-5CG84633PQ
   ];
 
   all = users ++ systems;

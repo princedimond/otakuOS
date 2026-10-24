@@ -3,7 +3,7 @@ enabled = true
 
 [bar.default]
 background_opacity = 0.4999999888241291
-center = [ "workspaces" ]
+center = [ "screenshot", "workspaces" ]
 end = [
     "media",
     "tray",
