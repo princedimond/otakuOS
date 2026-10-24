@@ -13,9 +13,9 @@
           "otakuOS-cache:eWlnqPfM6EsqN8if55rbNeXoY9HZvZ641djU9g9wbM8="
         ];
 
-        /*
-          netrc-file = config.age.secrets.attic-token.path;
+        netrc-file = config.age.secrets.attic-token.path;
 
+        /*
           post-build-hook = pkgs.writeShellScript "attic-push" ''
             set -eu
             set -f
