@@ -263,9 +263,9 @@ loadFilesOnSystem() {
 fixPermissionsOnConfig() {
   #Fix permissions on config
   echo -e "\n\e[32m[INSTALL] FIXING PERMISSIONS ON CONFIG\e[0m"
-  chown -R root:wheel /mnt/$configName
-  find /mnt/$configName -type d -exec chmod 775 {} \;
-  find /mnt/$configName -type f -exec chmod 664 {} \;
+  chown -R princedimond:wheel /mnt/$configName
+  find /mnt/$configName -type d -exec chmod 755 {} \;
+  find /mnt/$configName -type f -exec chmod 644 {} \;
 }
 
 #Run through functions
