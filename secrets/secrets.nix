@@ -25,6 +25,7 @@ in
   "iso-master-key.age".publicKeys = [
     princedimond
     PD-GG8QRF2
+    PD-5CG84633PQ
     master
   ];
   "attic-env.age".publicKeys = [
