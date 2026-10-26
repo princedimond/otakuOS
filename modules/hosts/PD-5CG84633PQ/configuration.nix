@@ -5,6 +5,8 @@
 
     imports = with inputs.self.modules.nixos; [
       system-desktop
+      intelcpu
+      installer-iso-keys
     ];
 
     home-manager.sharedModules = with inputs.self.modules.homeManager; [
