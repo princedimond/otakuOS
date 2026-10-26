@@ -1,0 +1,20 @@
+{ ... }:
+{
+  flake.modules.homeManager.niri = {
+    xdg.configFile."niri/config.kdl".text = ''
+      // This config is in the KDL format: https://kdl.dev
+      // "/-" comments out the following node.
+      // Check the wiki for a full description of the configuration:
+      // https://yalter.github.io/niri/Configuration:-Introduction
+
+      include "binds.kdl"
+      include "monitors.kdl"
+      include "layout.kdl"
+      include "autostart.kdl"
+      include "general.kdl"
+      include "input.kdl"
+      include "windowrules.kdl"
+      include "animations.kdl"
+    '';
+  };
+}

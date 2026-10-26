@@ -1,0 +1,17 @@
+{ ... }:
+{
+  flake.modules.homeManager.niri = {
+    xdg.configFile."niri/animations.kdl".text = ''
+      // Animation settings.
+      // The wiki explains how to configure individual animations:
+      // https://yalter.github.io/niri/Configuration:-Animations
+      animations {
+          // Uncomment to turn off all animations.
+          // off
+
+          // Slow down all animations by this factor. Values below 1 speed them up instead.
+          // slowdown 3.0
+      }
+    '';
+  };
+}

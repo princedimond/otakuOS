@@ -1,0 +1,11 @@
+{ ... }:
+{
+  flake.modules.homeManager.niri = {
+    xdg.configFile."niri/autostart.kdl".text = ''
+      spawn-at-startup "noctalia"
+
+      // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
+      // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+    '';
+  };
+}
