@@ -13,6 +13,7 @@
         directories = [
           "/var/lib/nixos"
           "/var/log"
+          "/otakuOS"
         ];
 
         files = [

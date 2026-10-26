@@ -193,6 +193,7 @@ cat << EOF > /tmp/installer/$configName/modules/hosts/$newHostname/configuration
 
     imports = with inputs.self.modules.nixos; [
       $systemType
+      impermenance
     ];
 
     home-manager.sharedModules = with inputs.self.modules.homeManager; [
@@ -249,23 +250,23 @@ installConfig() {
 loadFilesOnSystem() {
   #Move config onto new system
   echo -e "\n\e[32m[INSTALL] MOVING CONFIG ONTO NEW SYSTEM\e[0m"
-  cp -r "/tmp/installer/$configName" "/mnt/$configName"
+  cp -r "/tmp/installer/$configName" "/mnt/persist/$configName"
 
   #Move SSH keys onto new system
   echo -e "\n\e[32m[INSTALL] MOVING SSH KEYS ONTO NEW SYSTEM\e[0m"
-  mkdir -p /mnt/etc/ssh
-  cp /tmp/installer/keys/id_ed25519 /mnt/etc/ssh/ssh_host_ed25519_key
-  cp /tmp/installer/keys/id_ed25519.pub /mnt/etc/ssh/ssh_host_ed25519_key.pub
-  chmod 0600 /mnt/etc/ssh/ssh_host_ed25519_key
-  chmod 0644 /mnt/etc/ssh/ssh_host_ed25519_key.pub
+  mkdir -p /mnt/persist/etc/ssh
+  cp /tmp/installer/keys/id_ed25519 /mnt/persist/etc/ssh/ssh_host_ed25519_key
+  cp /tmp/installer/keys/id_ed25519.pub /mnt/persist/etc/ssh/ssh_host_ed25519_key.pub
+  chmod 0600 /mnt/persist/etc/ssh/ssh_host_ed25519_key
+  chmod 0644 /mnt/persist/etc/ssh/ssh_host_ed25519_key.pub
 }
 
 fixPermissionsOnConfig() {
   #Fix permissions on config
   echo -e "\n\e[32m[INSTALL] FIXING PERMISSIONS ON CONFIG\e[0m"
-  chown -R princedimond:wheel /mnt/$configName
-  find /mnt/$configName -type d -exec chmod 755 {} \;
-  find /mnt/$configName -type f -exec chmod 644 {} \;
+  chown -R princedimond:wheel /mnt/persist/$configName
+  find /mnt/persist/$configName -type d -exec chmod 755 {} \;
+  find /mnt/persist/$configName -type f -exec chmod 644 {} \;
 }
 
 #Run through functions
