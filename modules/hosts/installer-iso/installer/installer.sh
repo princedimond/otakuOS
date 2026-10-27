@@ -244,7 +244,7 @@ partitionDisk() {
 
 installConfig() {
   echo -e "\n\e[32m[INSTALL] INSTALLING CONFIG ONTO NEW SYSTEM\e[0m"
-  nixos-install --root /mnt --flake "path:/tmp/installer/$configName#$newHostname" --no-root-password
+  nixos-install --root /mnt --flake "path:/tmp/installer/$configName#$newHostname" --no-root-password --option fallback true
 }
 
 loadFilesOnSystem() {
