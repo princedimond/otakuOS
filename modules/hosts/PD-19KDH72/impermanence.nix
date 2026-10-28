@@ -1,7 +1,6 @@
 { inputs, ... }:
 {
   flake.modules.nixos.PD-19KDH72 = {
-    imports = with inputs.self.modules.nixos; [ impermanence ];
 
     environment.persistence."/persist" = {
       directories = [
