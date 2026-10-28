@@ -6,6 +6,7 @@
       imports = [ inputs.impermanence.nixosModules.impermanence ];
 
       age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
+      filesystems."/persist".neededForBoot = true;
 
       environment.persistence."/persist" = {
         hideMounts = true;
