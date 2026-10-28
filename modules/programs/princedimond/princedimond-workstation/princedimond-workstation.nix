@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.princedimond-gaming =
+  flake.modules.nixos.princedimond-workstation =
     { pkgs, ... }:
     {
 
