@@ -13,7 +13,7 @@ in
         ];
       };
 
-      pdpwd.file = ../../../secrets/pdpwd.age;
+      age.secrets.pdpwd.file = ../../../secrets/pdpwd.age;
 
       users.users."${username}" = {
         isNormalUser = true;
