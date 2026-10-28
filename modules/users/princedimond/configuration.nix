@@ -4,7 +4,7 @@ let
 in
 {
   flake.modules.nixos."${username}" =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
 
       home-manager.users."${username}" = {
@@ -13,10 +13,14 @@ in
         ];
       };
 
+      pdpwd.file = ../../../secrets/pdpwd.age;
+
       users.users."${username}" = {
         isNormalUser = true;
-        initialPassword = "changeme";
+        #initialPassword = "changeme";
+        hashedPasswordFile = config.age.secrets.pdpwd.path;
         shell = pkgs.zsh;
+        uid = 1000;
         extraGroups = [
           "networkmanager"
           "wheel"

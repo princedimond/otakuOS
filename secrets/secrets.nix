@@ -21,6 +21,7 @@ in
   "git-credentials.age".publicKeys = all;
   "pdssh-pub.age".publicKeys = all;
   "pdssh-private.age".publicKeys = all;
+  "pdpwd.age".publicKeys = all;
   "iso-master-pub.age".publicKeys = all;
   "iso-master-key.age".publicKeys = [
     princedimond
