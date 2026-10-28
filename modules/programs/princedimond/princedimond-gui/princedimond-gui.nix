@@ -14,7 +14,6 @@
         "expressvpn"
         "winbox"
         "lunacy"
-        "davinci-resolve"
         "warp-terminal"
         "ventoy"
         "ventoy-qt5"
@@ -68,7 +67,6 @@
         obs-studio
         #kdePackages.kdenlive
         krita
-        davinci-resolve
         handbrake
         devede
         cheese
