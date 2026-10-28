@@ -6,7 +6,7 @@
 
       nix.settings = {
         substituters = [
-          "http://10.10.0.192:3263/otakuOS-cache"
+          "https://otakuOS-nix-cache.behemothtechnologies.net/otakuOS-cache"
         ];
 
         trusted-public-keys = [
@@ -15,17 +15,6 @@
 
         netrc-file = config.age.secrets.attic-token.path;
 
-        /*
-          post-build-hook = pkgs.writeShellScript "attic-push" ''
-            set -eu
-            set -f
-            export PATH="${pkgs.attic-client}/bin:$PATH"
-
-            TOKEN=$(${pkgs.gawk}/bin/awk '/^password/ {print $2}' ${config.age.secrets.attic-token.path})
-            attic login otakuOS-cache http://10.10.0.192:3263 "$TOKEN"
-            attic push otakuOS-cache $OUT_PATHS
-          '';
-        */
       };
       systemd.services.attic-watch-store = {
         description = "Push new store paths to the otakuOS-cache Attic cache";
@@ -45,7 +34,7 @@
         };
         script = ''
           TOKEN=$(awk '/^password/ {print $2}' ${config.age.secrets.attic-token.path})
-          attic login otakuOS-cache http://10.10.0.192:3263 "$TOKEN"
+          attic login otakuOS-cache https://otakuOS-nix-cache.behemothtechnologies.net "$TOKEN"
           exec attic watch-store -j 1 otakuOS-cache
         '';
       };
