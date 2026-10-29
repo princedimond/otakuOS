@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.PD-19KDH72 = {
+  flake.modules.nixos.PD-ZENBOOK14X = {
     networking.hostName = "PD-ZENBOOK14X";
 
     imports = with inputs.self.modules.nixos; [
