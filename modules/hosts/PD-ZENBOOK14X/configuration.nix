@@ -4,13 +4,13 @@
     networking.hostName = "PD-ZENBOOK14X";
 
     imports = with inputs.self.modules.nixos; [
-      system-desktop
+      system-gaming
       intelcpu
       impermanence
     ];
 
     home-manager.sharedModules = with inputs.self.modules.homeManager; [
-      system-desktop
+      system-gaming
     ];
   };
 }
