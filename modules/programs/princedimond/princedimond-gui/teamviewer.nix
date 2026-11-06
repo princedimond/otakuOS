@@ -1,7 +1,7 @@
 { ... }:
 {
   flake.modules.nixos.princedimond-gui =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       nixpkgs.config.allowUnfreePackages = [
         "teamviewer"
