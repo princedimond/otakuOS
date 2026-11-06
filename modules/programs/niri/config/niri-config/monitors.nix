@@ -12,7 +12,7 @@
           // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
           mode "1920x1080"
 
-          scale 1
+          scale 1.25
 
           // Transform allows to rotate the output counter-clockwise, valid values are:
           // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
