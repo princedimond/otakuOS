@@ -11,7 +11,6 @@
         "zoom"
         "hubstaff"
         "microsoft-edge"
-        "expressvpn"
         "winbox"
         "lunacy"
         "warp-terminal"
@@ -19,10 +18,12 @@
         "ventoy-qt5"
         "hplip"
         "hplipWithPlugin"
+        "trilium-desktop"
       ];
       nixpkgs.config.permittedInsecurePackages = [
         "ventoy-1.1.12"
         "ventoy-qt5-1.1.12"
+        "electron-40.10.5"
       ];
       environment.systemPackages = with pkgs; [
         ferdium
@@ -35,6 +36,8 @@
         freeplane
         #nputs.nixpkgs-unstable.dia
         #yed
+        nix-ld
+        unstable.trilium-desktop
         affine
         anytype
         siyuan
@@ -42,13 +45,13 @@
         joplin-desktop
         kdePackages.marknote
         notesnook
+        chirp
         kdePackages.konversation
         quasselClient
         zoom
         hubstaff
         proton-vpn
         microsoft-edge
-        expressvpn
         tailscale
         remmina
         wireguard-ui
