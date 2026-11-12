@@ -34,6 +34,7 @@
         libreoffice-qt-fresh
         stirling-pdf-desktop
         freeplane
+        chirp
         #nputs.nixpkgs-unstable.dia
         #yed
         nix-ld
@@ -52,7 +53,7 @@
         hubstaff
         proton-vpn
         microsoft-edge
-        tailscale
+        file-roller
         remmina
         wireguard-ui
         wireguard-tools
@@ -69,11 +70,13 @@
         lunacy
         obs-studio
         #kdePackages.kdenlive
+        mission-center
         krita
         handbrake
         devede
         cheese
         kooha
+        vlc
         bitwarden-desktop
         gnome-disk-utility
         system-config-printer
