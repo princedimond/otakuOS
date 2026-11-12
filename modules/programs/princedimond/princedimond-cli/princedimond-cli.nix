@@ -28,6 +28,10 @@
         libimobiledevice
         libimobiledevice-glue
         ifuse
+        zip
+        unzip
+        unrar
+        p7zip
       ];
     };
 }
