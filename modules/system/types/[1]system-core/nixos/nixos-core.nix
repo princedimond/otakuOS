@@ -1,12 +1,12 @@
 { inputs, ... }:
 {
   flake.modules.nixos.system-core =
-    { ... }:
+    { lib, ... }:
     {
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
       hardware.enableRedistributableFirmware = true;
-      services.automatic-timezoned.enable = true;
+      services.automatic-timezoned.enable = lib.mkForce false;
 
       system.stateVersion = "26.05";
       environment.sessionVariables = {
