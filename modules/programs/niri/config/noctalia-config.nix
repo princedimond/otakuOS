@@ -105,7 +105,7 @@
       icon_size = 16
       launcher_custom_image = "/home/princedimond/Pictures/オタク　Productions/favicon.png"
       launcher_position = "start"
-      pinned = [ "thunar", "com.mitchellh.ghostty", "zen-beta", "anytype", "ferdium", "dev.zed.Zed" ]
+      pinned = [ "thunar", "com.mitchellh.ghostty", "zen-beta", "ferdium", "trilium", "anytype", "dev.zed.Zed" ]
       show_dots = true
       smart_auto_hide = true
 
