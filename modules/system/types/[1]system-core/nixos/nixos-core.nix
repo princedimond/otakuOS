@@ -6,7 +6,7 @@
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
       hardware.enableRedistributableFirmware = true;
-      services.automatic-timezoned.enable = lib.mkForce false;
+      services.automatic-timezoned.enable = true; #lib.mkForce false;
 
       system.stateVersion = "26.05";
       environment.sessionVariables = {
