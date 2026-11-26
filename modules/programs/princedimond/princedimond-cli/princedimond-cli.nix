@@ -17,7 +17,6 @@
         pciutils
         direnv
         btop
-        resources
         nh
         dmidecode
         cpu-x
