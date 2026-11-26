@@ -19,6 +19,7 @@
         "hplip"
         "hplipWithPlugin"
         "trilium-desktop"
+        "windterm"
       ];
       nixpkgs.config.permittedInsecurePackages = [
         "ventoy-1.1.12"
@@ -26,6 +27,7 @@
         "electron-40.10.5"
       ];
       environment.systemPackages = with pkgs; [
+        openvpn
         ferdium
         discord
         #element-desktop
@@ -35,7 +37,7 @@
         stirling-pdf-desktop
         freeplane
         chirp
-        #nputs.nixpkgs-unstable.dia
+        dia
         #yed
         nix-ld
         unstable.trilium-desktop
@@ -54,11 +56,12 @@
         proton-vpn
         microsoft-edge
         file-roller
-        remmina
         wireguard-ui
         wireguard-tools
         deluge
         winbox4
+        windterm
+        putty
         waynergy
         gthumb
         imagemagick
@@ -70,7 +73,7 @@
         lunacy
         obs-studio
         #kdePackages.kdenlive
-        mission-center
+        resources
         krita
         handbrake
         devede
